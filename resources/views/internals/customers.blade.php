@@ -3,8 +3,8 @@
 <h1>Customers</h1>
 
 <ul>
-    @foreach ($customers as $item)
-        <li>{{ $item }}</li>
+    @foreach ($customers as $customer)
+        <li>{{ $customer->name }}</li>
     @endforeach
 </ul>
 

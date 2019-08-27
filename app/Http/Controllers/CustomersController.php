@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+
 class CustomersController extends Controller
 {
     public function list()
     {
-        $customers = [
-            'John Doe',
-            'Jane Doe',
-            'Bob The Builder'
-        ];
+        $customers = Customer::all();
 
         return view('internals.customers', [
             'customers' => $customers
