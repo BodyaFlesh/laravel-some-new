@@ -1,12 +1,12 @@
 @extends('layout')
 
-@section('title', 'Customers')
+@section('title', 'Add new customer')
 
 @section('content')
 
 <div class="row">
     <div class="col-12">
-        <h1>Customers</h1>
+        <h1>Add new Customer</h1>
     </div>
 </div>
 
@@ -43,38 +43,6 @@
             
             <button class="btn btn-primary" type="submit">Submit</button>
         </form>
-    </div>
-</div>
-
-<hr>
-<div class="row">
-    <div class="col-6">
-        <h3>Active customers</h3>
-        <ul>
-            @foreach ($activeCustomers as $customer)
-                <li>{{ $customer->name }} <span class="text-muted">({{ $customer->company->name }})</span></li>
-            @endforeach
-        </ul>
-    </div>
-    <div class="col-6">
-            <h3>Inactive customers</h3>
-        <ul>
-            @foreach ($inactiveCustomers as $customer)
-                <li>{{ $customer->name }} <span class="text-muted">({{ $customer->company->name }})</span></li>
-            @endforeach
-        </ul>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        @foreach($companies as $company)
-            <h3>{{ $company->name }}</h3>
-            <ul>
-                @foreach($company->customers as $customer)
-                    <li>{{ $customer->name }}</li>
-                @endforeach
-            </ul>
-        @endforeach
     </div>
 </div>
 
