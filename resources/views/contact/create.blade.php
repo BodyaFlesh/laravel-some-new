@@ -1,6 +1,7 @@
 @extends('layout')
 @section('content')
 <h1>Contacts</h1>
+@if(! session()->has('message'))
 <form action="/contact" method="POST">
     @csrf
     <div class="form-group">
@@ -20,4 +21,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Send message</button>
 </form>
+@endif
 @endsection
