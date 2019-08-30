@@ -19,7 +19,8 @@
 //Route::view('test', 'test');
 Route::view('/', 'home');
 Route::view('about', 'about');
-Route::view('contacts', 'contacts');
+Route::get('contact', 'ContactFormController@create');
+Route::post('contact', 'ContactFormController@store');
 
 // Route::get('customers', 'CustomersController@index');
 // Route::get('customers/create', 'CustomersController@create');
