@@ -10,38 +10,28 @@ class CustomersController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        // $companies = Company::all();
-        // $activeCustomers = Customer::active()->get();
-        // $inactiveCustomers = Customer::inactive()->get();
 
         return view('customers.index', compact('customers'));
     }
 
     public function create()
     {
+        $customer = new Customer();
         $companies = Company::all();
-        return view('customers.create', compact('companies'));
+        dd($customer);
+        return view('customers.create', compact('companies', 'customer'));
     }
 
     public function store()
     {
-        $data = request()->validate([
-            'name'              => 'required|min:3',
-            'email'             => 'required|email',
-            'active'            => 'required',
-            'company_id'        => 'required'
-        ]);
-
-        Customer::create($data);
+        Customer::create($this->validateRequest());
 
         return redirect('/customers');
     }
 
     public function show(Customer $customer)
     {
-        //$customer = Customer::findOrFail($customer);
-
-        return view('customers.show', compact('customer'));
+        return view('customers.show', compact('customer', 'customer'));
     }
 
     public function edit(Customer $customer)
@@ -52,15 +42,25 @@ class CustomersController extends Controller
 
     public function update(Customer $customer)
     {
-        $data = request()->validate([
+        $customer->update($this->validateRequest());
+
+        return redirect('/customers/' . $customer->id);
+    }
+
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
+
+        return redirect('customers');
+    }
+
+    private function validateRequest()
+    {
+        return request()->validate([
             'name'              => 'required|min:3',
             'email'             => 'required|email',
             'active'            => 'required',
             'company_id'        => 'required'
         ]);
-
-        $customer->update($data);
-
-        return redirect('/customers/' . $customer->id);
     }
 }
