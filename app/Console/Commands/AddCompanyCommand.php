@@ -28,10 +28,14 @@ class AddCompanyCommand extends Command
      */
     public function handle()
     {
+        $name = $this->ask('What is the company name?');
+        $phone = $this->ask('What is the company\s phone number?');
+
+
         $company = Company::create([
-            'name'      => $this->argument('name'),
+            'name'      => $name,
             //'phone'     => $this->argument('phone') ?: 'N/A',
-            'phone'     => $this->argument('phone')
+            'phone'     => $phone
         ]);
 
         $this->info('Added: ' . $company->name);
