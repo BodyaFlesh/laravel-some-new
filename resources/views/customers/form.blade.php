@@ -26,4 +26,9 @@
         @endforeach
     </select>
 </div>
+<div class="form-group d-flex flex-column">
+    <label for="image">Profile Image</label>
+    <input type="file" name="image">
+    <div>{{ $errors->first('image') }}</div>
+</div>
 {{-- {{ $company->id === $customer->company->id ? 'selected' : "" }} --}}
