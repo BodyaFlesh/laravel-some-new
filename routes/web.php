@@ -32,6 +32,8 @@ Route::post('contact', 'ContactFormController@store');
 
 Route::resource('customers', 'CustomersController')->middleware('auth');
 
+//Route::resource('customers', 'CustomersController')->middleware('can:view,customer');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

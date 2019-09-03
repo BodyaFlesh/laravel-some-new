@@ -4,12 +4,16 @@
 
 @section('content')
 
+
 <div class="row">
     <div class="col-12">
         <h1>Customers</h1>
-        <p><a href="/customers/create">Add new Customer</a></p>
+        @can('create', App\Customer::class)
+            <p><a href="/customers/create">Add new Customer</a></p>
+        @endcan
     </div>
 </div>
+
 @foreach($customers as $customer)
 <div class="row">
     <div class="col-2">
